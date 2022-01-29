@@ -1,0 +1,25 @@
+class Solution {
+public:
+    
+    int rec(unordered_map<int, int>& ans, int n){
+        
+        if(n==1 || n==2){
+            return n;
+        }
+        
+        if(ans.find(n) != ans.end()){
+            return ans[n];
+        }
+        
+        ans[n] = rec(ans, n-1) + rec(ans, n-2);
+        return ans[n];
+        
+    }
+    
+    int climbStairs(int n) {
+       
+        unordered_map<int, int> ans;
+        return rec(ans, n);
+        
+    }
+};
